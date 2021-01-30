@@ -109,7 +109,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="book-now" class="btn-style">Book Now</button>
         </div>
     </main>
 
@@ -117,7 +117,6 @@
 
     <script>
 
-      
         document.getElementById('twoPlus').addEventListener('click', function(){
             const minusInput =document.getElementById('minusInput');
             const minusInputId =parseInt(minusInput.value);
@@ -148,6 +147,10 @@
             const pluseId =plusInputId - 1;
             plusInput.value =pluseId;
             totalSubmit()
+        });
+
+        document.getElementById('book-now').addEventListener('click',function(){
+        alert('You have booked bus ticket.')
         });
 
         function totalSubmit(){

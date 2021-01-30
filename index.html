@@ -63,7 +63,7 @@
                 <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($ <span id="frist-class">150</span>)</label>
-                    <input id="plusInput" class="inp-style inp-width" type="number" value="1" name="">
+                    <input id="plusInput" class="inp-style inp-width" type="number" value="0" name="">
                 </div>
                 <div class="plus-minus-btn">
                     <p id="plusBtn">+</p>
@@ -73,7 +73,7 @@
                 <div class="input-group f-class">
                     <div>
                         <label for="">Economy ($ <span id="second-class">100</span> )</label>
-                        <input id="minusInput" class="inp-style inp-width" type="number" name="" value="1">
+                        <input id="minusInput" class="inp-style inp-width" type="number" name="" value="0">
                     </div>
                     <div class="plus-minus-btn">
                         <p> <span id="twoPlus">+</span> <span id="twoMinus">-</span> </p>
@@ -87,7 +87,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$ <span id="Subtotal">250</span></p>
+                        <p>$ <span id="Subtotal">00</span></p>
                     </div>
                 </div>
 
@@ -96,7 +96,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$ <span id="tax">25</span></p>
+                        <p>$ <span id="tax">00</span></p>
                     </div>
                 </div>
                 <hr>
@@ -105,7 +105,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$ <span id="amount">275</span></p>
+                        <p>$ <span id="amount">00</span></p>
                     </div>
                 </div>
             </div>
@@ -117,13 +117,12 @@
 
     <script>
 
+      
         document.getElementById('twoPlus').addEventListener('click', function(){
             const minusInput =document.getElementById('minusInput');
             const minusInputId =parseInt(minusInput.value);
             const minusId =minusInputId + 1;
             minusInput.value =minusId;
-            const totalPluse =minusId *100;
-            document.getElementById('second-class').innerText =totalPluse;
             totalSubmit()
         });
 
@@ -132,8 +131,6 @@
             const minusInputId =parseInt(minusInput.value);
             const minusId =minusInputId - 1;
             minusInput.value =minusId;
-            const totalPluse =minusId *100;
-            document.getElementById('second-class').innerText =totalPluse;
             totalSubmit()
         });
 
@@ -142,8 +139,6 @@
             const plusInputId =parseInt(plusInput.value);
             const pluseId =plusInputId + 1;
             plusInput.value =pluseId;
-            const totalPluse =pluseId * 150;
-            document.getElementById('frist-class').innerText =totalPluse;
             totalSubmit()
         });
 
@@ -152,22 +147,20 @@
             const plusInputId =parseInt(plusInput.value);
             const pluseId =plusInputId - 1;
             plusInput.value =pluseId;
-            const totalPluse =pluseId * 150;
-            document.getElementById('frist-class').innerText =totalPluse;
             totalSubmit()
         });
 
         function totalSubmit(){
-            const busInput =document.getElementById('frist-class');
-            const busInputId =parseInt(busInput.innerText);
-            const second =document.getElementById('second-class');
-            const secondId =parseInt(second.innerText);
-            const totalAmount =busInputId + secondId ;
-            document.getElementById('Subtotal').innerText =totalAmount;
-            const totalTex =totalAmount * 0.10;
-            document.getElementById('tax').innerText =totalTex;
-            const total =totalAmount + totalTex;
-            document.getElementById('amount').innerText =total;
+            const plusInput =document.getElementById('plusInput');
+            const plusInputId =parseInt(plusInput.value);
+            const minusInput =document.getElementById('minusInput');
+            const minusInputId =parseInt(minusInput.value);
+            const total = plusInputId *150 + minusInputId *100;
+            document.getElementById('Subtotal').innerText=total;
+            const tax =total *0.10;
+            document.getElementById('tax').innerText=tax;
+            const maxTotal = total + tax;
+            document.getElementById('amount').innerText=maxTotal;
         }
 
     </script>
